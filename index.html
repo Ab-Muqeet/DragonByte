@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DragonByte - The Gaming Store</title>
+
+    <link rel="stylesheet" href="css/Style.css">
+    <link rel="stylesheet" href="css/Header-Footer.css">
+    <link rel="stylesheet" href="css/Home.css">
+    <link rel="stylesheet" href="css/Login-Register.css">
+    <link rel="stylesheet" href="css/Products.css">
+    <link rel="stylesheet" href="css/Cart.css">
+    <link rel="stylesheet" href="css/Checkout.css">
+        
+  <style>
+        
+        /*Pages Ko Hide Krne K Liye, Agr Ye Ni Hua Tow Saray Page Nazr Ayein Gai*/
+        .page {
+            display: none;
+        }
+
+        /* Home Page Ko Samne Lanay K liye Hai Ye Css */
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+                                                         <!-- Muqeet(25i-2046) -->
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">Contact Us</div>
+        <div class="top-bar-right">
+            <a href="#" onclick="showPage('login')">   <b>Sign-in</b></a> 
+                                                             or
+            <a href="#" onclick="showPage('register')"><b>Register</b></a>
+        </div>
+    </div>
+
+    <!-- Header Page -->
+    <header>
+        <div class="header-left">
+            <div class="logo">
+                <img src="images/Dragon logo.png" src="Logo Pic">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="categories">Categories</a></li>
+                    <li><a href="#" class="nav-link" data-page="sellers">Top Sellers</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="search-box">
+                <input type="text" placeholder="Search..." id="searchInput">
+                <button class="search-btn" onclick="performSearch()">🔍︎</button>
+            </div>
+            <a href="#" class="view-cart" onclick="showPage('cart'); return false;">
+                ViewCart 🛒
+            </a>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div class="page active" id="home">
+        <div class="home-container">
+            <div class="left-content">
+                <h1>Welcome to DragonByte</h1>
+                <p>Upgrade your setup with top-quality keyboards, mice, and monitors designed for precision, comfort, and performance. Whether you're a casual gamer or chasing competitive wins, we've got the gear to elevate your gameplay.</p>
+            </div>
+            <div class="right-content">
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide">
+                            <div class="slide-label">Gaming Mouse</div>
+                            <div class="product-image">
+                                <img src="images/Main Gaming Mouse .jpg" alt="Gaming Mouse" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-label">Mechanical Keyboard</div>
+                            <div class="product-image">
+                                <img src="images/Gaming Keyboard.jpeg" alt="Gaming Setup" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-label">Gaming Headset</div>
+                            <div class="product-image">
+                                <img src="images/Gaming Headset.jpg" alt="Gaming Setup" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="slide-label">Complete Gaming Setup</div>
+                            <div class="product-image">
+                                <img src="images/Full set.jpg" alt="Gaming Setup" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-dots">
+                        <div class="carousel-dot active" data-slide="0"></div>
+                        <div class="carousel-dot" data-slide="1"></div>
+                        <div class="carousel-dot" data-slide="2"></div>
+                        <div class="carousel-dot" data-slide="3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                            <!--------------------------------------------------------------------------->    
+
+
+                                                         <!--Hamza Noor(25I=2006)-->
+
+    <!-- Categories Page -->
+    <div class="page" id="categories">
+        <div class="categories-section">
+            <h1 class="page-title">All Products</h1>
+            <div id="searchResultsTitle" class="search-results-title" style="display: none;">
+                Search Results for: <span class="search-query" id="searchQuery"></span>
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="mouse">Mouse</button>
+                <button class="filter-btn" data-filter="keyboard">Keyboard</button>
+                <button class="filter-btn" data-filter="headset">Headset</button>
+                <button class="filter-btn" data-filter="monitor">Monitor</button>
+                <button class="filter-btn" data-filter="chair">Chair</button>
+                <button class="filter-btn" data-filter="mousepad">Mousepad</button>
+                <button class="filter-btn" data-filter="accessories">Accessories</button>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </div>
+
+    <!-- Top Sellers Page -->
+    <div class="page" id="sellers">
+        <div class="sellers-section">
+            <h1 class="page-title">Top Sellers</h1>
+            <div class="products-grid" id="sellersGrid"></div>
+        </div>
+    </div>
+                             <!--------------------------------------------------------------------------->
+
+
+                                                         <!--Shehryar Abdullah(25I-2023)-->
+
+    <!-- Cart Page -->
+    <div class="page" id="cart">
+        <div class="cart-section">
+            <h1 class="page-title">Shopping Cart</h1>
+            <div id="cartContent"></div>
+        </div>
+    </div>
+                             <!--------------------------------------------------------------------------->
+                             
+                             
+                                                         <!--Abdul Rafay(25i-2055)-->
+
+
+
+    <!-- Login Page -->
+    <div class="page" id="login">
+        <div class="auth-container">
+            <div class="auth-image">
+                <img src="images/login.png" alt="Login Pic" style="width: 100%; height: 100%; object-fit: fill; border-radius: 10px;">
+            </div>
+            <div class="auth-form-container">
+                <div class="login-box">
+                    <h2>Login</h2>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" required placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn-login">Sign In</button>
+                        <div class="login-links">
+                            <a href="#">Forgot Password?</a> | <a href="#" onclick="showPage('register')">Create Account</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Register Page -->
+    <div class="page" id="register">
+        <div class="auth-container">
+            <div class="auth-image">
+               <img src="images/register.gif" alt="Register Pic" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+            </div>
+            <div class="auth-form-container">
+                <div class="register-box">
+                    <h2>Register</h2>
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" required placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" required placeholder="Create a password">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" required placeholder="Enter your phone number">
+                        </div>
+                        <button type="submit" class="btn-register">Create Account</button>
+                        <div class="login-links">
+                            Already have an account? <a href="#" onclick="showPage('login')">Sign In</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+                              <!--------------------------------------------------------------------------->
+                             
+                             
+                                                         <!--Shehryar Abdullah(25i-2023)-->
+
+
+   
+    <!-- Checkout Page -->
+    <div class="page" id="checkout">
+        <div class="checkout-section">
+            <h1 class="page-title">Checkout</h1>
+            <div class="checkout-box">
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="tel" required placeholder="Enter your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Shipping Address</label>
+                        <textarea rows="3" required placeholder="Enter your complete shipping address"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Method</label>
+                        <select required>
+                            <option value="">Select Payment Method</option>
+                            <option value="cod">Cash on Delivery</option>
+                            <option value="card">Credit/Debit Card</option>
+                            <option value="paypal">PayPal</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-place-order">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+                             <!--------------------------------------------------------------------------->
+                             
+                             
+                                                         <!--Abdul Muqeet(25i-2046)-->
+
+
+        
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="images/Dragon logo.png" src="Logo Pic" style="width: auto;height: 60px;">
+            <p>© 2025 DragonByte - All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+    
+                             <!--------------------------------------------------------------------------->
+                                                           <!--HTML END-->
+                             <!--------------------------------------------------------------------------->
+                             
+                             
+
+
+
+                                                         <!--JAVA SCRIPT Starting-->
+
+
+    <script>
+        // Products Data
+        const products = [
+            {
+                id: 1,
+                name: "Pro Gaming Mouse",
+                description: "16000 DPI | RGB Lighting | Ergonomic Design | 8 Programmable Buttons",
+                price: 79.99,
+                image: '<img src="images/Pro Gaming Mouse.jpg" alt="Pro Gaming Mouse" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "mouse",
+                topSeller: true
+            },
+            {
+                id: 2,
+                name: "Wireless Gaming Mouse",
+                description: "2.4GHz Wireless | 12000 DPI | 50H Battery Life | Lightweight Design",
+                price: 69.99,
+                image: '<img src="images/Wireless Gaming Mouse.jpg" alt="Wireless Gaming Mouse" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "mouse",
+                topSeller: false
+            },
+            {
+                id: 3,
+                name: "RGB Gaming Mouse",
+                description: "Customizable RGB | 16000 DPI | 7 Buttons | Braided Cable",
+                price: 49.99,
+                image: '<img src="images/RGB Gaming Mouse.jpg" alt="RGB Gaming Mouse" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "mouse",
+                topSeller: false
+            },
+            {
+                id: 4,
+                name: "Mechanical Keyboard",
+                description: "RGB Backlit | Mechanical Switches | Anti-Ghosting | Aluminum Frame",
+                price: 129.99,
+                image: '<img src="images/Mechanical Keyboard.jpg" alt="Mechanical Keyboard" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "keyboard",
+                topSeller: true
+            },
+            {
+                id: 5,
+                name: "Compact Mechanical Keyboard",
+                description: "60% Layout | RGB Lighting | Hot-swappable Switches | Portable Design",
+                price: 89.99,
+                image: '<img src="images/Compact Mechanical Keyboard.webp" alt="Compact Mechanical Keyboard" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "keyboard",
+                topSeller: false
+            },
+            {
+                id: 6,
+                name: "Wireless Mechanical Keyboard",
+                description: "Bluetooth & 2.4GHz | RGB Backlit | Long Battery Life | Aluminum Body",
+                price: 149.99,
+                image: '<img src="images/Wireless Mechanical Keyboard.jpg" alt="Wireless Mechanical Keyboard" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "keyboard",
+                topSeller: false
+            },
+            {
+                id: 7,
+                name: "Gaming Headset",
+                description: "7.1 Surround Sound | Noise Cancelling | Comfortable Padding | Detachable Mic",
+                price: 99.99,
+                image: '<img src="images/Gaming Headset.jpg" alt="Gaming Headset" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "headset",
+                topSeller: true
+            },
+            {
+                id: 8,
+                name: "Wireless Gaming Headset",
+                description: "2.4GHz Wireless | 7.1 Surround | 30H Battery | RGB Lighting",
+                price: 129.99,
+                image: '<img src="images/Wireless Headset.jpg" alt="Wireless Headset" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "headset",
+                topSeller: false
+            },
+            {
+                id: 9,
+                name: "Gaming Monitor",
+                description: "27\" 144Hz | 1ms Response | QHD | HDR Support",
+                price: 349.99,
+                image: '<img src="images/Gaming Monitor.jpg" alt="Gaming Monitor" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "monitor",
+                topSeller: false
+            },
+            {
+                id: 10,
+                name: "UltraWide Gaming Monitor",
+                description: "34\" 144Hz | 1ms | 21:9 Ratio | Curved Display",
+                price: 499.99,
+                image: '<img src="images/UltraWide Gaming Monitor.jpg" alt="UltraWide Gaming Monitor" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "monitor",
+                topSeller: false
+            },
+            {
+                id: 11,
+                name: "Gaming Chair",
+                description: "Ergonomic Design | Lumbar Support | Adjustable Arms | PU Leather",
+                price: 299.99,
+                image: '<img src="images/Gaming Chair.jpg" alt="Gaming Chair" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "chair",
+                topSeller: false
+            },
+            {
+                id: 12,
+                name: "Racing Gaming Chair",
+                description: "Premium PU Leather | 4D Armrests | Reclining | High Back Support",
+                price: 349.99,
+                image: '<img src="images/Racing Gaming Chair.jpg" alt="Racing Gaming Chair" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "chair",
+                topSeller: false
+            },
+            {
+                id: 13,
+                name: "Gaming Mousepad",
+                description: "XXL Size | Non-Slip Base | Smooth Surface | RGB Edge Lighting",
+                price: 39.99,
+                image: '<img src="images/Gaming Mousepad.jpg" alt="Gaming Mousepad" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "mousepad",
+                topSeller: true
+            },
+            {
+                id: 14,
+                name: "Desk Mat",
+                description: "Extended Size | Waterproof | Stitched Edges | Multiple Colors",
+                price: 29.99,
+                image: '<img src="images/Desk Mat.jpg" alt="Desk Mat" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "mousepad",
+                topSeller: false
+            },
+            {
+                id: 15,
+                name: "Controller Charging Dock",
+                description: "Dual Controller Charging | LED Indicators | Fast Charging | Compact Design",
+                price: 34.99,
+                image: '<img src="images/Controller Charging Dock.jpg" alt="Controller Charging Dock" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "accessories",
+                topSeller: false
+            },
+            {
+                id: 16,
+                name: "Cable Management Kit",
+                description: "Complete Cable Organization | Adhesive Clips | Cable Sleeves | Zip Ties",
+                price: 19.99,
+                image: '<img src="images/Cable Management Kit.webp" alt="Cable Management Kit" style="width: 100%; height: 100%; object-fit: cover;">',
+                category: "accessories",
+                topSeller: false
+            }
+        ];
+
+        let cart = [];
+        let currentSlide = 0;
+        let slideInterval;
+        let currentSearchQuery = '';
+
+        // Carousel functionality
+        function initCarousel() {
+            const slides = document.querySelector('.carousel-slides');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            // Auto-play slides
+            slideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % 4;
+                updateCarousel();
+            }, 4000);
+            
+            // Dot click events
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                    resetInterval();
+                });
+            });
+        }
+        
+        function updateCarousel() {
+            const slides = document.querySelector('.carousel-slides');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            slides.style.transform = `translateX(-${currentSlide * 25}%)`;
+
+            console.log(`Carousel moved to slide ${currentSlide + 1} of 4`);
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % 4;
+                updateCarousel();
+            }, 4000);
+        }
+
+        // Search Functionality
+        function performSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const query = searchInput.value.trim().toLowerCase();
+            console.log(`User searched for: "${query}"`);
+            
+            if (query) {
+                currentSearchQuery = query;
+                showPage('categories');
+                filterProductsBySearch(query);
+                searchInput.value = '';
+            } else {
+                alert('Please enter a search term');
+            }
+        }
+
+        // Filter Products by Search
+        function filterProductsBySearch(query) {
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(query) || 
+                product.description.toLowerCase().includes(query) ||
+                product.category.toLowerCase().includes(query)
+            );
+            
+            // Show search results title
+            const searchResultsTitle = document.getElementById('searchResultsTitle');
+            const searchQueryElement = document.getElementById('searchQuery');
+            
+            if (filteredProducts.length > 0) {
+                searchResultsTitle.style.display = 'block';
+                searchQueryElement.textContent = `"${query}"`;
+            } else {
+                searchResultsTitle.style.display = 'block';
+                searchQueryElement.textContent = `"${query}"`;
+            }
+            
+            renderProducts('productsGrid', filteredProducts);
+            
+            // Reset filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('[data-filter="all"]').classList.add('active');
+        }
+
+        // Filter Products by Category
+        function filterProducts(category) {
+            const filteredProducts = category === 'all' 
+                ? products 
+                : products.filter(product => product.category === category);
+            
+            // Hide search results title when using category filters
+            document.getElementById('searchResultsTitle').style.display = 'none';
+            currentSearchQuery = '';
+            
+            renderProducts('productsGrid', filteredProducts);
+        }
+
+        // Render Products
+        function renderProducts(containerId, productList) {
+            const container = document.getElementById(containerId);
+            
+            if (productList.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <h3>No products found</h3>
+                        <p>Try adjusting your search or filter criteria</p>
+                        <button class="btn-add-cart" onclick="filterProducts('all')" style="margin-top: 20px;">Show All Products</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = productList.map(product => `
+                <div class="product-card">
+                    <div class="product-image">${product.image}</div>
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <button class="btn-add-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+                </div>
+            `).join('');
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            console.log(`Cart updated: ${cart.length} unique items`);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            alert(`${product.name} added to cart!`);
+        }
+
+        // Render Cart
+        function renderCart() {
+            const cartContent = document.getElementById('cartContent');
+            
+            if (cart.length === 0) {
+                cartContent.innerHTML = `
+                    <div class="cart-empty">
+                        <h2>Your cart is empty</h2>
+                        <button class="btn-add-cart" onclick="showPage('categories')" style="padding: 12px 40px; margin-top: 20px;">Start Shopping</button>
+                    </div>
+                `;
+                return;
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const tax = subtotal * 0.1;
+            const total = subtotal + tax;
+
+            cartContent.innerHTML = `
+                <div class="cart-items">
+                    ${cart.map((item, index) => `
+                        <div class="cart-item">
+                            <div class="cart-item-image">${item.image}</div>
+                            <div class="cart-item-details">
+                                <h3>${item.name}</h3>
+                                <p>${item.description}</p>
+                            </div>
+                            <div class="cart-item-quantity">
+                                <button class="qty-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                                <div class="qty-display">${item.quantity}</div>
+                                <button class="qty-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                            </div>
+                            <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
+                            <button class="btn-remove" onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span>$${subtotal.toFixed(2)}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (10%):</span>
+                        <span>$${tax.toFixed(2)}</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span>$${total.toFixed(2)}</span>
+                    </div>
+                    <button class="btn-checkout" onclick="showPage('checkout')">Proceed to Checkout</button>
+                </div>
+            `;
+        }
+
+        // Update Quantity
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            if (cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            renderCart();
+        }
+
+        // Remove from Cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        // Page Navigation
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            
+            document.getElementById(pageName).classList.add('active');
+            document.querySelector(`[data-page="${pageName}"]`)?.classList.add('active');
+
+            if (pageName === 'cart') {
+                renderCart();
+            }
+            
+            // Reset carousel when returning to home page
+            if (pageName === 'home') {
+                currentSlide = 0;
+                updateCarousel();
+                resetInterval();
+            }
+            
+            // Clear search results when navigating away from categories
+            if (pageName !== 'categories') {
+                document.getElementById('searchResultsTitle').style.display = 'none';
+                currentSearchQuery = '';
+            }
+        }
+
+        // Navigation Links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                showPage(this.dataset.page);
+            });
+        });
+
+        // Filter Button Events
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                filterProducts(this.dataset.filter);
+            });
+        });
+
+        // Enter key support for search
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Login Form
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Login successful!');
+            showPage('home');
+        });
+
+        // Register Form
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Account created successfully!');
+            showPage('home');
+        });
+
+        // Checkout Form
+        document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Order placed successfully!');
+            cart = [];
+            showPage('home');
+        });
+
+        // Initialize
+        renderProducts('productsGrid', products);
+        renderProducts('sellersGrid', products.filter(p => p.topSeller));
+        initCarousel();
+    </script>
+</body>
+</html>

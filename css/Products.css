@@ -1,0 +1,147 @@
+                                                   /* Hamza Noor(25I-2006) */
+ 
+
+
+       .categories-section {
+            padding: 60px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #2d2d2d;
+            color: #999;
+            border: 1px solid #444;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background: #3d3d3d;
+            color: #fff;
+        }
+
+        .filter-btn.active {
+            background: #B40000;
+            color: white;
+            border-color: #B40000;
+        }
+
+        .page-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #B40000;
+        }
+
+        .search-results-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .search-query {
+            color: #B40000;
+            font-weight: bold;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #2d2d2d;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #B40000;
+            box-shadow: 0 5px 20px rgba(180, 0, 0, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #B40000;
+            border: 2px dashed #B40000;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .product-card p {
+            font-size: 13px;
+            color: #999;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            font-size: 24px;
+            color: #B40000;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn-add-cart {
+            padding: 10px 30px;
+            background: #B40000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-add-cart:hover {
+            background: #8a0000;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+            font-size: 18px;
+            grid-column: 1 / -1;
+        }
+
+
+
+
+/* Top Sellers Page */
+        .sellers-section {
+            padding: 60px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
